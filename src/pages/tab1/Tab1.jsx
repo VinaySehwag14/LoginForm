@@ -1,52 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../../axios";
 import "./tab1.css";
 
 const Tab1 = () => {
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [address, setAddress] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`/register`, {
+        username: userName,
+        mobile: mobileNo,
+        email,
+        address,
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="login">
       <span className="loginTitle">Add Details</span>
 
-      <form
-        className="loginForm"
-        //   onSubmit={handleSubmit}
-      >
-        <label>Email</label>
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <label>Username</label>
         <input
-          type="email"
+          type="text"
           className="loginInput"
-          placeholder="Enter email ...."
+          placeholder="Enter Username ...."
+          onChange={(e) => setUserName(e.target.value)}
+
           //   ref={emailRef}
         />
-        <label>Password</label>
+        <label>Email</label>
         <input
-          type="password"
+          type="text"
           className="loginInput"
-          placeholder="Enter Password ...."
-
-          //   ref={passwordRef}
+          placeholder="Enter email ...."
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label>Mobile</label>
         <input
-          type="tel"
+          type="text"
           className="loginInput"
           placeholder="Enter Mobile ...."
-
-          //   ref={passwordRef}
+          onChange={(e) => setMobileNo(e.target.value)}
         />
         <label>Address</label>
         <input
           type="text"
           className="loginInput"
           placeholder="Enter Address ...."
-
-          //   ref={passwordRef}
+          onChange={(e) => setAddress(e.target.value)}
         />
-        <button
-          className="loginButton"
-          type="submit"
-          //  disabled={isFetching}
-        >
-          Login
+        <button className="loginButton" type="submit">
+          Register
         </button>
       </form>
       <button className="loginRegisterButton">

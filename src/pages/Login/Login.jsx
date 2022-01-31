@@ -1,28 +1,17 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
+import axios from "../../axios";
 import "./login.css";
-import axios from "axios";
-import { API } from "../../backend";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  console.log(email, password);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `${API}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-        {
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-        }
-      );
+      const res = await axios.post(`/auth/login`, { email, password });
       console.log(res);
     } catch (err) {
       console.log(err);
@@ -38,29 +27,28 @@ const Login = () => {
         <input
           type="text"
           className="loginInput"
-          //   defaultValue="admin@namasys.co"
-          ref={emailRef}
+          placeholder="Enter email ...."
+          // value={email}
+          defaultValue="admin@namasys.co"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
         <input
           type="password"
           className="loginInput"
-          //   defaultValue="admin@123"
-          ref={passwordRef}
+          placeholder="Enter password ...."
+          value={password}
+          // defaultValue="admin@123"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button
           className="loginButton"
           type="submit"
           //  disabled={isFetching}
         >
-          Login
+          <Link to="/home">Login</Link>
         </button>
       </form>
-      <button className="loginRegisterButton">
-        {/* <Link to="/register" className="link">
-          Register
-        </Link> */}
-      </button>
     </div>
   );
 };
