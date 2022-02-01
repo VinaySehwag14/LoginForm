@@ -1,14 +1,18 @@
 import "./App.css";
 import Login from "./pages/Login/Login";
-import Tab1 from "./pages/tab1/Tab1";
+import TabOne from "./pages/tabOne/TabOne";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import TabTwo from "./pages/tabTwo/TabTwo";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Tab1 />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/tabOne" element={<TabOne />} />
+        <Route path="/tabTwo" element={<TabTwo />} />
       </Routes>
     </BrowserRouter>
   );

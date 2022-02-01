@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "../../axios";
-import "./tab1.css";
+import "./tabOne.css";
 
-const Tab1 = () => {
+const TabOne = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [mobileNo, setMobileNo] = useState("");
@@ -34,8 +34,6 @@ const Tab1 = () => {
           className="loginInput"
           placeholder="Enter Username ...."
           onChange={(e) => setUserName(e.target.value)}
-
-          //   ref={emailRef}
         />
         <label>Email</label>
         <input
@@ -59,16 +57,11 @@ const Tab1 = () => {
           onChange={(e) => setAddress(e.target.value)}
         />
         <button className="loginButton" type="submit">
-          Register
+          Submit
         </button>
       </form>
-      <button className="loginRegisterButton">
-        {/* <Link to="/register" className="link">
-              Register
-            </Link> */}
-      </button>
     </div>
   );
 };
 
-export default Tab1;
+export default TabOne;

@@ -28,8 +28,7 @@ const Login = () => {
           type="text"
           className="loginInput"
           placeholder="Enter email ...."
-          // value={email}
-          defaultValue="admin@namasys.co"
+          // defaultValue="admin@namasys.co"
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
@@ -37,16 +36,13 @@ const Login = () => {
           type="password"
           className="loginInput"
           placeholder="Enter password ...."
-          value={password}
-          // defaultValue="admin@123"
+          defaultValue="admin@123"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          className="loginButton"
-          type="submit"
-          //  disabled={isFetching}
-        >
-          <Link to="/home">Login</Link>
+        <button className="loginButton" type="submit">
+          <Link className="link" to="/home">
+            Login
+          </Link>
         </button>
       </form>
     </div>
